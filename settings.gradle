@@ -1,0 +1,11 @@
+rootProject.name = 'online-eval-cloud'
+include 'sjy-eval-eureka'
+include 'sjy-eval-gateway'
+include 'sjy-eval-config'
+include 'sjy-eval-zipkin'
+include 'sjy-eval-auth'
+include 'sjy-eval-oss'
+include 'sjy-eval-user'
+include 'sjy-eval-knowlege'
+include 'sjy-eval-common'
+

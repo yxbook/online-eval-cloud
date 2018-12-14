@@ -1,0 +1,35 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: eval-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+zuul:
+  #sensitive-headers为空则全部服务都可以传递Cookie信息
+  sensitive-headers:
+  routes:
+    #自定义路由配置
+    auth:
+      path: /api-auth/**
+      serviceId: eval-auth
+    user:
+      path: /api-user/**
+      serviceId: eval-user
+  #排除某些路由 写法  - /**/myRace/**
+  ignored-patterns:
+feign:
+  hystrix:
+    enabled: true
+  command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 200000
+
+
+
+
