@@ -1,3 +1,44 @@
+ext {
+    libraries = [
+            druidVersion  : "1.1.2",
+            groovyVserion : "2.5.1",
+            commonsIoVserion : "2.5",
+            commonsMathVserion : "3.5",
+            commonsCsvVserion : "1.0",
+            commonsLangVserion : "3.4",
+            fastjsonVserion : "1.2.29",
+            mysqlVersion : "5.1.36",
+            jdbcVersion : "4.3.11.RELEASE",
+            beanUtilVersion : "1.9.2",
+            servletVersion : "3.1.0",
+            jwtVersion : "0.9.0",
+            jacksonVersion : "1.9.13",
+            gsonVersion : "2.8.0",
+            validationVersion : "1.1.0.Final",
+            hibernateVersion : "5.2.4.Final",
+            memcachedVersion : "3.0.2",
+            logstashVersion : "5.0",
+            logbackVersion : "1.2.3",
+            metricsVersion : "3.2.5",
+            guavaVersion : "26.0-jre",
+            jodaTimeVersion : "2.10",
+            commonsCodecVersion : "1.11",
+            qiniuVersion : "7.2.0",
+            aliyunVersion : "1.7.8.Final",
+            httpcomponentVersion : "4.5",
+            rxjavaVersion : "2.2.2",
+            poiVersion : "4.0.0",
+            mybatisVersion : "3.4.6",
+            mybatisSpringVersion : "1.3.1",
+            swaggerVersion : "2.8.0",
+            aspectjVersion : "1.8.8",
+            baomidouVersion : "2.2.0",
+            generatorVersion : "1.3.5",
+            pagehelperVersion : "5.0.1",
+
+
+    ]
+}
 buildscript {
     repositories {
         mavenLocal()
@@ -71,6 +112,67 @@ allprojects {
 subprojects {
 
     dependencies{
+
+        compile "org.codehaus.groovy:groovy:${libraries.groovyVserion}"
+        compile "org.springframework:spring-jdbc:${libraries.jdbcVersion}"
+        compile "javax.servlet:javax.servlet-api:${libraries.servletVersion}"
+        compile "io.jsonwebtoken:jjwt:${libraries.jwtVersion}"
+        compile "joda-time:joda-time:${libraries.jodaTimeVersion}"
+        compile "com.google.code.gson:gson:${libraries.gsonVersion}"
+        compile "com.google.guava:guava:${libraries.guavaVersion}"
+        compile "io.reactivex.rxjava2:rxjava:${libraries.rxjavaVersion}"
+
+
+        compile "commons-io:commons-io:${libraries.commonsIoVserion}"
+        compile "commons-codec:commons-codec:${libraries.commonsCodecVersion}"
+        compile "commons-beanutils:commons-beanutils:${libraries.beanUtilVersion}"
+
+
+        compile "org.codehaus.jackson:jackson-core-asl:${libraries.jacksonVersion}"
+        compile "org.codehaus.jackson:jackson-mapper-asl:${libraries.jacksonVersion}"
+        compile "javax.validation:validation-api:${libraries.validationVersion}"
+        compile "com.whalin:Memcached-Java-Client:${libraries.memcachedVersion}"
+        compile "net.logstash.logback:logstash-logback-encoder:${libraries.logstashVersion}"
+        compile "ch.qos.logback:logback-core:${libraries.logbackVersion}"
+
+
+        compile "io.dropwizard.metrics:metrics-core:${libraries.metricsVersion}"
+        compile "io.dropwizard.metrics:metrics-servlet:${libraries.metricsVersion}"
+        compile "io.dropwizard.metrics:metrics-logback:${libraries.metricsVersion}"
+        compile "io.dropwizard.metrics:metrics-jvm:${libraries.metricsVersion}"
+        compile "io.dropwizard.metrics:metrics-json:${libraries.metricsVersion}"
+
+
+        compile "com.qiniu:qiniu-java-sdk:${libraries.qiniuVersion}"
+        compile "com.aliyun.openservices:ons-client:${libraries.aliyunVersion}"
+        compile "com.alibaba:fastjson:${libraries.fastjsonVserion}"
+        compile "com.alibaba:druid:${libraries.druidVersion}"
+        compile "mysql:mysql-connector-java:${libraries.mysqlVersion}"
+
+
+        compile "org.hibernate:hibernate-core:${libraries.hibernateVersion}"
+        compile "org.hibernate:hibernate-ehcache:${libraries.hibernateVersion}"
+        compile "org.hibernate:hibernate-validator:${libraries.hibernateVersion}"
+
+
+        compile fileTree(dir:'lib',includes:['*jar'])
+        compile "org.apache.commons:commons-csv:${libraries.commonsCsvVserion}"
+        compile "org.apache.commons:commons-math3:${libraries.commonsMathVserion}"
+        compile "org.apache.poi:poi-ooxml:${libraries.poiVersion}"
+        compile "org.apache.httpcomponents:httpclient:${libraries.httpcomponentVersion}"
+        compile "org.apache.httpcomponents:httpmime:${libraries.httpcomponentVersion}"
+        compile "org.apache.commons:commons-lang3:${libraries.commonsLangVserion}"
+
+
+        compile "org.mybatis:mybatis:${libraries.mybatisVersion}"
+        compile "org.mybatis:mybatis-spring:${libraries.mybatisSpringVersion}"
+        compile "com.github.pagehelper:pagehelper:${libraries.pagehelperVersion}"
+        compile "org.mybatis.generator:mybatis-generator-core:${libraries.generatorVersion}"
+        compile "com.baomidou:mybatis-plus:${libraries.baomidouVersion}"
+        compile "org.aspectj:aspectjweaver:${libraries.aspectjVersion}"
+        compile "io.springfox:springfox-swagger2:${libraries.swaggerVersion}"
+        compile "io.springfox:springfox-swagger-ui:${libraries.swaggerVersion}"
+
     }
 
 }
