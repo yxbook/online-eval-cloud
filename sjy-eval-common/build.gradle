@@ -1,6 +1,67 @@
+dependencies{
 
-dependencies {
+    compile "org.codehaus.groovy:groovy:${libraries.groovyVserion}"
+    compile "org.springframework:spring-jdbc:${libraries.jdbcVersion}"
+    compile "javax.servlet:javax.servlet-api:${libraries.servletVersion}"
+    compile "io.jsonwebtoken:jjwt:${libraries.jwtVersion}"
+    compile "joda-time:joda-time:${libraries.jodaTimeVersion}"
+    compile "com.google.code.gson:gson:${libraries.gsonVersion}"
+    compile "com.google.guava:guava:${libraries.guavaVersion}"
+    compile "io.reactivex.rxjava2:rxjava:${libraries.rxjavaVersion}"
+    compile "org.apache.velocity:velocity:${libraries.velocityVersion}"
 
 
+    compile "commons-io:commons-io:${libraries.commonsIoVserion}"
+    compile "commons-codec:commons-codec:${libraries.commonsCodecVersion}"
+    compile "commons-beanutils:commons-beanutils:${libraries.beanUtilVersion}"
+
+
+    compile "org.codehaus.jackson:jackson-core-asl:${libraries.jacksonVersion}"
+    compile "org.codehaus.jackson:jackson-mapper-asl:${libraries.jacksonVersion}"
+    compile "javax.validation:validation-api:${libraries.validationVersion}"
+    compile "com.whalin:Memcached-Java-Client:${libraries.memcachedVersion}"
+    compile "net.logstash.logback:logstash-logback-encoder:${libraries.logstashVersion}"
+    compile "ch.qos.logback:logback-core:${libraries.logbackVersion}"
+
+
+    compile "io.dropwizard.metrics:metrics-core:${libraries.metricsVersion}"
+    compile "io.dropwizard.metrics:metrics-servlet:${libraries.metricsVersion}"
+    compile "io.dropwizard.metrics:metrics-logback:${libraries.metricsVersion}"
+    compile "io.dropwizard.metrics:metrics-jvm:${libraries.metricsVersion}"
+    compile "io.dropwizard.metrics:metrics-json:${libraries.metricsVersion}"
+
+
+    compile "com.qiniu:qiniu-java-sdk:${libraries.qiniuVersion}"
+    compile "com.aliyun.openservices:ons-client:${libraries.aliyunVersion}"
+    compile "com.alibaba:fastjson:${libraries.fastjsonVserion}"
+    compile "com.alibaba:druid:${libraries.druidVersion}"
+    compile "mysql:mysql-connector-java:${libraries.mysqlVersion}"
+
+
+    compile "org.hibernate:hibernate-core:${libraries.hibernateVersion}"
+    compile "org.hibernate:hibernate-ehcache:${libraries.hibernateVersion}"
+    compile "org.hibernate:hibernate-validator:${libraries.hibernateVersion}"
+
+
+    compile fileTree(dir:'lib',includes:['*jar'])
+    compile "org.apache.commons:commons-csv:${libraries.commonsCsvVserion}"
+    compile "org.apache.commons:commons-math3:${libraries.commonsMathVserion}"
+    compile "org.apache.poi:poi-ooxml:${libraries.poiVersion}"
+    compile "org.apache.httpcomponents:httpclient:${libraries.httpcomponentVersion}"
+    compile "org.apache.httpcomponents:httpmime:${libraries.httpcomponentVersion}"
+    compile "org.apache.commons:commons-lang3:${libraries.commonsLangVserion}"
+
+
+    compile "org.mybatis:mybatis:${libraries.mybatisVersion}"
+    compile "org.mybatis:mybatis-spring:${libraries.mybatisSpringVersion}"
+    compile "com.github.pagehelper:pagehelper:${libraries.pagehelperVersion}"
+    compile "org.mybatis.generator:mybatis-generator-core:${libraries.generatorVersion}"
+    compile "com.baomidou:mybatis-plus:${libraries.baomidouVersion}"
+    compile "org.aspectj:aspectjweaver:${libraries.aspectjVersion}"
+    compile "io.springfox:springfox-swagger2:${libraries.swaggerVersion}"
+    compile "io.springfox:springfox-swagger-ui:${libraries.swaggerVersion}"
+
+
+    compile "org.springframework.boot:spring-boot-starter-web"
 
 }
