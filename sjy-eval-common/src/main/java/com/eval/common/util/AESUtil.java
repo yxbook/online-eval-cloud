@@ -117,7 +117,7 @@ public class AESUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (IllegalBlockSizeException e) {
-            throw new RuntimeException("配置文件中的密码需要使用AES加密");
+            throw new RuntimeException("配置文件中的密码需要使用AESUtil加密");
         } catch (BadPaddingException e) {
             e.printStackTrace();
         }
@@ -127,7 +127,7 @@ public class AESUtil {
 
     public static void main(String[] args) {
         String[] keys = {
-                "root", "fmkjredis", "LTAIvnWrs9Vf9EHe", "P2rOesNlUKnKqzdtxJFmeGUlHaJHoN"
+                "root"
         };
         System.out.println("key | AESEncode | AESDecode");
         for (String key : keys) {
@@ -136,6 +136,7 @@ public class AESUtil {
             System.out.print(encryptString + " | ");
             String decryptString = aesDecode(encryptString);
             System.out.println(decryptString);
+            System.out.println("-------------------------------------");
         }
     }
 }

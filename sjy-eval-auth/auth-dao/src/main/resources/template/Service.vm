@@ -1,0 +1,14 @@
+package ${package_name}.server.service;
+
+import com.eval.common.base.BaseService;
+import ${package_name}.dao.entity.${model};
+
+/**
+* @Description: ${model} Service接口
+* @Author: youxun
+* @CreateDate: ${ctime}.
+* @Version: 1.0
+**/
+public interface ${model}Service extends BaseService<${model}> {
+
+}

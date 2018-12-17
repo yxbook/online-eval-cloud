@@ -1,0 +1,3 @@
+dependencies {
+    compile project(':sjy-eval-auth:auth-dao')
+}

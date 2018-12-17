@@ -46,7 +46,8 @@ public class GeneratorUtil {
             String packageName,
             Map<String, String> lastInsertIdTables,
             String daoName,
-            String serviceName) throws Exception {
+            String serviceName,
+            String author) throws Exception {
 
         String os = System.getProperty("os.name");
         if (os.toLowerCase().startsWith("win")) {
@@ -58,7 +59,7 @@ public class GeneratorUtil {
         }
 
         String targetProject = module + "/" + daoName;
-        String basePath = GeneratorUtil.class.getResource("/").getPath().replace("/target/classes/", "").replace(targetProject, "").replaceFirst("/", "");
+        String basePath = GeneratorUtil.class.getResource("/").getPath().replace("/out/production/classes/", "").replace(targetProject, "").replaceFirst("/", "");
         //String generatorConfigXml = MybatisGeneratorUtil.class.getResource("/").getPath().replace("/target/classes/", "") + "/src/main/resources/generatorConfig.xml";
         targetProject = basePath + targetProject;
         String sql = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = '" + database + "' AND table_name = '" + tabelName + "';";
@@ -71,7 +72,7 @@ public class GeneratorUtil {
             Map<String, Object> table;
 
             // 查询定制前缀项目的所有表
-            JdbcUtil jdbcUtil = new JdbcUtil(jdbcDriver, jdbcUrl, jdbcUsername, "root");
+            JdbcUtil jdbcUtil = new JdbcUtil(jdbcDriver, jdbcUrl, jdbcUsername, jdbcPassword);
             List<Map> result = jdbcUtil.selectByParams(sql, null);
             for (Map map : result) {
                 System.out.println(map.get("TABLE_NAME"));
@@ -103,7 +104,7 @@ public class GeneratorUtil {
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
-        gc.setAuthor("youxun");
+        gc.setAuthor(author);
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         // gc.setMapperName("%sDao");
         // gc.setXmlName("%sDao");
@@ -124,7 +125,8 @@ public class GeneratorUtil {
         });
         dsc.setDriverName(jdbcDriver);
         dsc.setUsername(jdbcUsername);
-        dsc.setPassword(AESUtil.aesDecode(jdbcPassword));
+        //dsc.setPassword(AESUtil.aesDecode(jdbcPassword));
+        dsc.setPassword(jdbcPassword);
         dsc.setUrl(jdbcUrl);
         mpg.setDataSource(dsc);
 
@@ -160,7 +162,7 @@ public class GeneratorUtil {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent(packageName + ".dao");
-        pc.setEntity("domain");
+        pc.setEntity("entity");
         mpg.setPackageInfo(pc);
 
         TemplateConfig tc = new TemplateConfig();

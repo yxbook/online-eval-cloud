@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sjy.eval.auth.dao.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sjy.eval.auth.dao.entity.User">
+        <id column="ID" property="id" />
+        <result column="USER_ID" property="userId" />
+        <result column="PASSWORD" property="password" />
+        <result column="PERSON_NUMBER" property="personNumber" />
+        <result column="STATUS" property="status" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="unique_number" property="uniqueNumber" />
+        <result column="schoool_code" property="schooolCode" />
+        <result column="pwd_ming" property="pwdMing" />
+    </resultMap>
+
+</mapper>
