@@ -1,11 +1,16 @@
 package com.eval.common.base;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @program: online-eval-clould
  * @description:
  * @author: Created by youxun
  * @create: 2018-12-17 18:15
  **/
+@Setter
+@Getter
 public class BaseQueryVo {
 
     //表主键

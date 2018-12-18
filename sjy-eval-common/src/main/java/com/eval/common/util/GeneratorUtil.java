@@ -1,6 +1,7 @@
 package com.eval.common.util;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
@@ -8,6 +9,11 @@ import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.velocity.VelocityContext;
+import org.mybatis.generator.api.CommentGenerator;
+import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.IntrospectedTable;
+import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.api.dom.xml.XmlElement;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -157,6 +163,7 @@ public class GeneratorUtil {
         // 【实体】是否为构建者模型（默认 false）
         // public User setName(String name) {this.name = name; return this;}
         // strategy.setEntityBuliderModel(true);
+        strategy.setEntityLombokModel(true);
         mpg.setStrategy(strategy);
 
         // 包配置
@@ -171,7 +178,9 @@ public class GeneratorUtil {
         tc.setServiceImpl(null);
         mpg.setTemplate(tc);
         // 执行生成
+
         mpg.execute();
+
         System.out.println("========== 结束运行MybatisGenerator ==========");
 
         System.out.println("========== 开始生成Service ==========");

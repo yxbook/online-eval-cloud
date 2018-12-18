@@ -7,14 +7,22 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotations.Version;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
 /**
  * <p>
  * 
  * </p>
  *
  * @author youxun
- * @since 2018-12-17
+ * @since 2018-12-18
  */
+@Data
+@Accessors(chain = true)
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
@@ -59,104 +67,9 @@ public class User extends Model<User> {
     private String pwdMing;
 
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPersonNumber() {
-        return personNumber;
-    }
-
-    public void setPersonNumber(String personNumber) {
-        this.personNumber = personNumber;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public String getUniqueNumber() {
-        return uniqueNumber;
-    }
-
-    public void setUniqueNumber(String uniqueNumber) {
-        this.uniqueNumber = uniqueNumber;
-    }
-
-    public Integer getSchooolCode() {
-        return schooolCode;
-    }
-
-    public void setSchooolCode(Integer schooolCode) {
-        this.schooolCode = schooolCode;
-    }
-
-    public String getPwdMing() {
-        return pwdMing;
-    }
-
-    public void setPwdMing(String pwdMing) {
-        this.pwdMing = pwdMing;
-    }
-
     @Override
     protected Serializable pkVal() {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-        "id=" + id +
-        ", userId=" + userId +
-        ", password=" + password +
-        ", personNumber=" + personNumber +
-        ", status=" + status +
-        ", createDate=" + createDate +
-        ", updateTime=" + updateTime +
-        ", uniqueNumber=" + uniqueNumber +
-        ", schooolCode=" + schooolCode +
-        ", pwdMing=" + pwdMing +
-        "}";
-    }
 }
