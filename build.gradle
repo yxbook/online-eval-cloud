@@ -71,10 +71,17 @@ allprojects {
 
 subprojects {
 
+    //from文件夹目录下的所有xml文件打包进工程
+    processResources {
+        from('src/main/java') {
+            include '**/*.xml'
+        }
+    }
 
 
 }
 
-
 sourceSets.main.java.srcDirs = []
 sourceSets.main.groovy.srcDirs += ["src/main/java"]
+
+

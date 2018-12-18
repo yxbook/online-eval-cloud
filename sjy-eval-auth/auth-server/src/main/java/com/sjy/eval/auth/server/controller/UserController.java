@@ -1,21 +1,25 @@
 package com.sjy.eval.auth.server.controller;
 
-import com.eval.common.base.BaseApiService;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.eval.common.base.BaseController;
 import com.eval.common.base.BaseResult;
 import com.eval.common.base.BaseResultEnum;
+import com.eval.common.util.StringUtils;
 import com.sjy.eval.auth.dao.entity.User;
 import com.sjy.eval.auth.dao.queryVo.UserQuerVo;
 import com.sjy.eval.auth.server.service.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @program: online-eval-clould
@@ -25,22 +29,32 @@ import java.util.HashMap;
  **/
 @RestController
 @RequestMapping("/user")
-@Api(tags ={ "用户信息"},description = "用户信息接口-网关路径/api-user")
-public class UserController extends BaseController<User, UserService> implements BaseApiService<User>{
+@Api(tags ={ "鉴权服务"},description = "鉴权服务接口-网关路径/api-auth")
+public class UserController extends BaseController{
+
+    @Autowired
+    private UserService userService;
 
     //查询滚动动态信息
-    @ApiOperation(value="分页查询测试", notes="参数：无")
     @PutMapping("/queryUserPage")
-    public BaseResult queryUserPage(@RequestBody HashMap paramsMap) {
+    @ApiOperation(value="分页查询测试", notes="参数：无")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType="userQuerVo", name = "userId", value = "用户ID", required = true, dataType = "Integer"),
+            @ApiImplicitParam(paramType="userQuerVo", name = "password", value = "旧密码", required = true, dataType = "String"),
+            @ApiImplicitParam(paramType="userQuerVo", name = "newPassword", value = "新密码", required = true, dataType = "String")
+    })
+    public BaseResult queryUserPage(@RequestBody UserQuerVo querVo) {
         //自动get/set
-        UserQuerVo a = new UserQuerVo();
-        User user = new User();
-        user.setCreateDate(new Date());
-        System.out.println(user.getCreateDate());
-        return new BaseResult(BaseResultEnum.SUCCESS.status,"查询成功!", null);
+        Page tPage = buildPage(querVo);
+        HashMap<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("status", 0);
+        List<User> userList = userService.selectByMap(paramsMap);
+        tPage.setRecords(userList);
+        System.out.println(userList);
+        return new BaseResult(BaseResultEnum.SUCCESS.getStatus(), "查询成功", tPage);
     }
 
-  /*  private Page buildPage(T friendQueryVo) {
+    private Page buildPage(UserQuerVo friendQueryVo) {
         Page tPage =new Page(friendQueryVo.getPageNo(),friendQueryVo.getPageSize());
         if(StringUtils.isNotEmpty(friendQueryVo.getOrderBy())){
             tPage.setOrderByField(friendQueryVo.getOrderBy());
@@ -51,7 +65,7 @@ public class UserController extends BaseController<User, UserService> implements
             tPage.setAsc(true);
         }
         return tPage;
-    }*/
+    }
 
 
 

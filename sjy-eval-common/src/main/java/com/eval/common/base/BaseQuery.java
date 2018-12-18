@@ -11,7 +11,7 @@ import lombok.Setter;
  **/
 @Setter
 @Getter
-public class BaseQueryVo {
+public class BaseQuery {
 
     //表主键
     private int pKey;

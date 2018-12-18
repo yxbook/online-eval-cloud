@@ -14,7 +14,7 @@ import java.security.SecureRandom;
  * @Description: AES加解密
  **/
 public class AESUtil {
-    private static final String ENCODE_RULES = "fmkj";
+    private static final String ENCODE_RULES = "sjy";
 
     /**
      * 加密

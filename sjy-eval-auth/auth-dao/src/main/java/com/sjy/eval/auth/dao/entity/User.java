@@ -22,6 +22,7 @@ import lombok.experimental.Accessors;
  * @since 2018-12-18
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 public class User extends Model<User> {
 
