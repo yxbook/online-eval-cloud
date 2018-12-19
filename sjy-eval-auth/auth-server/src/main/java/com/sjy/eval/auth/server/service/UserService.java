@@ -1,7 +1,12 @@
 package com.sjy.eval.auth.server.service;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.eval.common.base.BaseService;
 import com.sjy.eval.auth.dao.entity.User;
+import com.sjy.eval.auth.dao.queryVo.UserQuerVo;
+
+import java.util.List;
 
 /**
 * @Description: User Service接口
@@ -11,4 +16,5 @@ import com.sjy.eval.auth.dao.entity.User;
 **/
 public interface UserService extends BaseService<User> {
 
+    List queryUserList(Pagination pagination, UserQuerVo querVo);
 }

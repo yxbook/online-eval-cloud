@@ -1,4 +1,4 @@
-package com.sjy.eval.auth.dao.queryVo;
+package com.sjy.eval.user.queryVo;
 
 import com.eval.common.base.BaseQuery;
 import lombok.Getter;
@@ -13,7 +13,4 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UserQuerVo extends BaseQuery {
-
-    private int code;
-
 }

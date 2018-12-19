@@ -1,12 +1,10 @@
-package com.sjy.eval.auth.server.service.impl;
+package com.sjy.eval.user.service.impl;
 
-import com.baomidou.mybatisplus.plugins.Page;
-import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+
 import com.eval.common.base.BaseServiceImpl;
-import com.sjy.eval.auth.dao.entity.User;
-import com.sjy.eval.auth.dao.mapper.UserMapper;
-import com.sjy.eval.auth.dao.queryVo.UserQuerVo;
-import com.sjy.eval.auth.server.service.UserService;
+import com.sjy.eval.user.entity.User;
+import com.sjy.eval.user.mapper.UserMapper;
+import com.sjy.eval.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     private UserMapper userMapper;
 
     @Override
-    public List queryUserList(Pagination pagination, UserQuerVo querVo) {
-        return userMapper.queryUserList(pagination, querVo);
+    public List<User> selectAll() {
+        return userMapper.selectAll();
     }
 }

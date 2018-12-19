@@ -59,9 +59,9 @@ public class BaseResult<T> implements Serializable{
     public void setData(T data) {
         this.data = data;
     }
-    public BaseResult(BaseResultEnum baseResultEnum,
+    public BaseResult(BaseEnum baseEnum,
                       T data) {
-        this(baseResultEnum.getStatus(), baseResultEnum.getMsg(), data);
+        this(baseEnum.getStatus(), baseEnum.getMsg(), data);
 
     }
 

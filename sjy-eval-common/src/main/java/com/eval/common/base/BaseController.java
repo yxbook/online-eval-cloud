@@ -29,7 +29,7 @@ public class BaseController{
         if (null != request.getHeader("X-Requested-With") && "XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))) {
             request.setAttribute("requestHeader", "ajax");
         }
-        return new BaseResult(BaseResultEnum.ERROR.getStatus(),"请求错误！", exception.getMessage());
+        return new BaseResult(BaseEnum.ERROR.getStatus(),"请求错误！", exception.getMessage());
     }
 
 }

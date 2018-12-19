@@ -11,16 +11,16 @@ import java.io.IOException;
  * @Author: youxun
  * @Version: 1.0
  **/
-public class BaseResultEnumSerializer extends StdSerializer<BaseResultEnum> {
+public class BaseResultEnumSerializer extends StdSerializer<BaseEnum> {
     public BaseResultEnumSerializer() {
-        super(BaseResultEnum.class);
+        super(BaseEnum.class);
     }
     public BaseResultEnumSerializer(Class t) {
         super(t);
     }
 
     @Override
-    public void serialize(BaseResultEnum value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    public void serialize(BaseEnum value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         gen.writeStartObject();
         gen.writeFieldName("status");
         gen.writeNumber(value.status);

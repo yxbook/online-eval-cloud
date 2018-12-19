@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sjy.eval.auth.dao.mapper.UserMapper">
+<mapper namespace="com.sjy.eval.user.mapper.UserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.sjy.eval.auth.dao.entity.User">
+    <resultMap id="BaseResultMap" type="com.sjy.eval.user.entity.User">
         <id column="ID" property="id" />
         <result column="USER_ID" property="userId" />
         <result column="PASSWORD" property="password" />
@@ -16,19 +16,8 @@
         <result column="pwd_ming" property="pwdMing" />
     </resultMap>
 
-    <select id="selectAll" resultType="java.util.HashMap">
-        SELECT
-          t.id,
-          t.user_id,
-          t.password,
-          t.person_number,
-          t.schoool_code,
-          d.area_code
-        FROM
-          USER t
-          LEFT JOIN d_school d
-            ON t.schoool_code = d.code
-        WHERE d.code = #{query.code}
-  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from user
+    </select>
 
 </mapper>

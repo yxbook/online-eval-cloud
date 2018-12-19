@@ -29,7 +29,8 @@ ext {
             httpcomponentVersion : "4.5",
             rxjavaVersion : "2.2.2",
             poiVersion : "4.0.0",
-            mybatisVersion : "3.4.6",
+            mybatisVersion : "1.3.2",
+            mybatisplusVersion : "1.0.5",
             mybatisSpringVersion : "1.2.0",
             swaggerVersion : "2.8.0",
             aspectjVersion : "1.8.8",
@@ -97,11 +98,14 @@ dependencies{
     compile "org.apache.commons:commons-lang3:${libraries.commonsLangVserion}"
 
 
-    compile "org.mybatis:mybatis:${libraries.mybatisVersion}"
-    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${libraries.mybatisSpringVersion}"
+    //集成baomidou插件必备的几个包
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${libraries.mybatisVersion}"
     compile "com.github.pagehelper:pagehelper:${libraries.pagehelperVersion}"
     compile "org.mybatis.generator:mybatis-generator-core:${libraries.generatorVersion}"
     compile "com.baomidou:mybatis-plus:${libraries.baomidouVersion}"
+    compile "com.baomidou:mybatisplus-spring-boot-starter:${libraries.mybatisplusVersion}"
+
+
     compile "org.aspectj:aspectjweaver:${libraries.aspectjVersion}"
     compile "io.springfox:springfox-swagger2:${libraries.swaggerVersion}"
     compile "io.springfox:springfox-swagger-ui:${libraries.swaggerVersion}"

@@ -1,17 +1,14 @@
-package com.sjy.eval.auth.dao.entity;
+package com.sjy.eval.user.entity;
 
-import com.baomidou.mybatisplus.enums.IdType;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotations.Version;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+import java.util.Date;
 
 /**
  * <p>
@@ -19,11 +16,10 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author youxun
- * @since 2018-12-19
+ * @since 2018-12-18
  */
-@Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
+@Getter
+@Setter
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
