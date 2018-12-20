@@ -45,7 +45,7 @@ ext {
 dependencies{
 
     compile "org.codehaus.groovy:groovy:${libraries.groovyVserion}"
-    compile "org.springframework:spring-jdbc:${libraries.jdbcVersion}"
+    //compile "org.springframework:spring-jdbc:${libraries.jdbcVersion}"
     compile "javax.servlet:javax.servlet-api:${libraries.servletVersion}"
     compile "io.jsonwebtoken:jjwt:${libraries.jwtVersion}"
     compile "joda-time:joda-time:${libraries.jodaTimeVersion}"

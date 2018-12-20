@@ -11,6 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -55,11 +56,11 @@ public class UserController extends BaseController{
 
     private Page buildPage(UserQuerVo friendQueryVo) {
         Page tPage =new Page(friendQueryVo.getPageNo(),friendQueryVo.getPageSize());
-        if(ValidateUtil.isNotEmpty(friendQueryVo.getOrderBy())){
-            tPage.setOrderByField(friendQueryVo.getOrderBy());
+        if(StringUtils.isNotEmpty(friendQueryVo.getOrderByDsc())){
+            tPage.setOrderByField(friendQueryVo.getOrderByDsc());
             tPage.setAsc(false);
         }
-        if(ValidateUtil.isNotEmpty(friendQueryVo.getOrderByAsc())){
+        if(StringUtils.isNotEmpty(friendQueryVo.getOrderByAsc())){
             tPage.setOrderByField(friendQueryVo.getOrderByAsc());
             tPage.setAsc(true);
         }
