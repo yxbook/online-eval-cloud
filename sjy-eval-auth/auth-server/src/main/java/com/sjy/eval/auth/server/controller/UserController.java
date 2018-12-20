@@ -39,7 +39,7 @@ public class UserController extends BaseController{
     private UserService userService;
 
     //查询滚动动态信息
-    @PutMapping("/queryUserPage")
+    @PutMapping("queryUserPage")
     @ApiOperation(value="分页查询测试", notes="分页查询测试")
     @ApiImplicitParams({
             @ApiImplicitParam(paramType="userQuerVo", name = "code", value = "用户ID", required = true, dataType = "Integer"),

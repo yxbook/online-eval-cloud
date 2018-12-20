@@ -1,0 +1,14 @@
+spring:
+  application:
+      name: eval-zipkin
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password:
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:eva321@localhost:8761/eureka/
+server:
+    port: 7777 #启动端口

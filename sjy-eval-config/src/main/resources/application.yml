@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yxbook/sjy-eval-config.git
+          search-paths: dev
+          username: yxbook
+          password: youxun123
+  application:
+      name: eval-config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:eva321@localhost:8761/eureka/
+server:
+    port: 9002 #启动端口

@@ -44,7 +44,9 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://admin:eva321@localhost:8761/eureka/
+  instance:
+    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
 logging:
   level:
      com.sjy.eval.auth.dao: debug
