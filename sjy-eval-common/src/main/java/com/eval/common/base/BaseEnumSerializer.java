@@ -11,11 +11,11 @@ import java.io.IOException;
  * @Author: youxun
  * @Version: 1.0
  **/
-public class BaseResultEnumSerializer extends StdSerializer<BaseEnum> {
-    public BaseResultEnumSerializer() {
+public class BaseEnumSerializer extends StdSerializer<BaseEnum> {
+    public BaseEnumSerializer() {
         super(BaseEnum.class);
     }
-    public BaseResultEnumSerializer(Class t) {
+    public BaseEnumSerializer(Class t) {
         super(t);
     }
 

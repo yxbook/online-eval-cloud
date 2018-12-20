@@ -7,7 +7,8 @@ eureka:
   server:
     enable-self-preservation: false  # eureka server自我保护，客户端停止后服务还存在，开发环境、生产环境打开
   instance:
-    hostname: localhost
+      status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+      hostname: localhost
 spring:
   application:
     name: eureka

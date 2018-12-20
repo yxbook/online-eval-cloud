@@ -82,7 +82,7 @@ public class GeneratorUtil {
                 table = new HashMap<>(2);
                 table.put("table_name", map.get("TABLE_NAME"));
                 tablesName.add((String) table.get("table_name"));
-                table.put("model_name", StringUtils.lineToHump(ObjectUtils.toString(map.get("TABLE_NAME"))));
+                table.put("model_name", ValidateUtil.lineToHump(ObjectUtils.toString(map.get("TABLE_NAME"))));
                 tables.add(table);
             }
             jdbcUtil.release();
@@ -211,7 +211,7 @@ public class GeneratorUtil {
         //deleteDir(new File(servicePath));
         //deleteDir(new File(serviceImplPath));
         for (int i = 0; i < tables.size(); i++) {
-            String model = StringUtils.lineToHump(ObjectUtils.toString(tables.get(i).get("table_name")));
+            String model = ValidateUtil.lineToHump(ObjectUtils.toString(tables.get(i).get("table_name")));
             String service = servicePath + "/" + model + "Service.java";
             //String serviceMock = servicePath + "/" + model + "ServiceMock.java";
             String serviceImpl = serviceImplPath + "/" + model + "ServiceImpl.java";
@@ -231,7 +231,7 @@ public class GeneratorUtil {
                 VelocityContext context = new VelocityContext();
                 context.put("package_name", packageName);
                 context.put("model", model);
-                context.put("mapper", StringUtils.toLowerCaseFirstOne(model));
+                context.put("mapper", ValidateUtil.toLowerCaseFirstOne(model));
                 context.put("ctime", ctime);
                 VelocityUtil.generate(serviceImpl_vm, serviceImpl, context);
                 System.out.println(serviceImpl);

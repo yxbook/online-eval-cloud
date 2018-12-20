@@ -31,19 +31,18 @@
         WHERE d.code = #{query.code}
   </select>
 
-    <select id="selectAllUser" resultMap="BaseResultMap">
+    <select id="queryListbyCode" resultMap="BaseResultMap">
         SELECT
           t.id,
           t.user_id,
           t.password,
           t.person_number,
           t.schoool_code,
-          d.area_code
+          t.create_Date
         FROM
           USER t
-          LEFT JOIN d_school d
-            ON t.schoool_code = d.code
-        WHERE d.code = 5200035
+          where t.schoool_code = #{code}
+
     </select>
 
 </mapper>

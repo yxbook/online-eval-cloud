@@ -20,5 +20,5 @@ public interface UserMapper extends BaseMapper<User> {
 
     List queryUserList(Pagination pagination, @Param("query")UserQuerVo querVo);
 
-    List<User> selectAllUser();
+    List queryListbyCode(Pagination pagination, @Param("code") int code);
 }

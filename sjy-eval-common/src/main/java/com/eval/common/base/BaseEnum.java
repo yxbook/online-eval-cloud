@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
  * @Author: youxun
  * @Version: 1.0
  **/
-@JsonSerialize(using = BaseResultEnumSerializer.class)
+@JsonSerialize(using = BaseEnumSerializer.class)
 public enum BaseEnum {
     SUCCESS(200,"请求成功"),
     BLANK(400,"参数错误"),

@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.eval.common.base.BaseController;
 import com.eval.common.base.BaseResult;
 import com.eval.common.base.BaseEnum;
-import com.eval.common.util.StringUtils;
 import com.sjy.eval.user.entity.User;
 import com.sjy.eval.user.queryVo.UserQuerVo;
 import com.sjy.eval.user.service.UserService;
@@ -56,11 +55,11 @@ public class UserController extends BaseController{
 
     private Page buildPage(UserQuerVo friendQueryVo) {
         Page tPage =new Page(friendQueryVo.getPageNo(),friendQueryVo.getPageSize());
-        if(StringUtils.isNotEmpty(friendQueryVo.getOrderBy())){
+        if(ValidateUtil.isNotEmpty(friendQueryVo.getOrderBy())){
             tPage.setOrderByField(friendQueryVo.getOrderBy());
             tPage.setAsc(false);
         }
-        if(StringUtils.isNotEmpty(friendQueryVo.getOrderByAsc())){
+        if(ValidateUtil.isNotEmpty(friendQueryVo.getOrderByAsc())){
             tPage.setOrderByField(friendQueryVo.getOrderByAsc());
             tPage.setAsc(true);
         }

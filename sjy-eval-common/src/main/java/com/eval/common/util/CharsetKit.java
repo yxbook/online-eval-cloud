@@ -33,7 +33,7 @@ public class CharsetKit
      */
     public static Charset charset(String charset)
     {
-        return StringUtils.isEmpty(charset) ? Charset.defaultCharset() : Charset.forName(charset);
+        return ValidateUtil.isEmpty(charset) ? Charset.defaultCharset() : Charset.forName(charset);
     }
 
     /**
@@ -69,7 +69,7 @@ public class CharsetKit
             srcCharset = StandardCharsets.UTF_8;
         }
 
-        if (StringUtils.isEmpty(source) || srcCharset.equals(destCharset))
+        if (ValidateUtil.isEmpty(source) || srcCharset.equals(destCharset))
         {
             return source;
         }

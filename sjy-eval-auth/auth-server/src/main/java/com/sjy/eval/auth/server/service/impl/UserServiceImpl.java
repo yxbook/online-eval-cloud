@@ -34,4 +34,9 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     public List queryUserList(Pagination pagination, UserQuerVo querVo) {
         return userMapper.queryUserList(pagination, querVo);
     }
+
+    @Override
+    public List queryListbyCode(Pagination pagination, int code) {
+        return userMapper.queryListbyCode(pagination, code);
+    }
 }

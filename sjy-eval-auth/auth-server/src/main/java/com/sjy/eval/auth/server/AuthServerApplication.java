@@ -2,7 +2,8 @@ package com.sjy.eval.auth.server;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.context.annotation.ComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
@@ -11,7 +12,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author: Created by youxun
  * @create: 2018-12-17 16:27
  **/
-@SpringBootApplication
+@SpringCloudApplication
+@ComponentScan("com.sjy.eval.auth.server")
 @MapperScan(basePackages = "com.sjy.eval.*.*.mapper")
 @EnableSwagger2
 public class AuthServerApplication {

@@ -27,7 +27,7 @@ public class StrFormatter
      */
     public static String format(final String strPattern, final Object... argArray)
     {
-        if (StringUtils.isEmpty(strPattern) || StringUtils.isEmpty(argArray))
+        if (ValidateUtil.isEmpty(strPattern) || ValidateUtil.isEmpty(argArray))
         {
             return strPattern;
         }

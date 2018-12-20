@@ -2,9 +2,9 @@ package com.sjy.eval.auth.server.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.eval.common.base.BaseController;
-import com.eval.common.base.BaseResult;
 import com.eval.common.base.BaseEnum;
-import com.eval.common.util.StringUtils;
+import com.eval.common.base.BaseResult;
+import com.eval.common.util.ValidateUtil;
 import com.sjy.eval.auth.dao.queryVo.UserQuerVo;
 import com.sjy.eval.auth.server.service.UserService;
 import io.swagger.annotations.Api;
@@ -48,14 +48,12 @@ public class UserController extends BaseController{
     })
     public BaseResult queryUserPage(@RequestBody UserQuerVo userQuerVo) {
         //必要的入参校验以及日志打印
-        if(StringUtils.isNull(userQuerVo.getCode())){
+        if(ValidateUtil.isNull(userQuerVo.getCode())){
             return new BaseResult(BaseEnum.BLANK.status, "学校ID不能为空", false);
         }
         Page tPage = userQuerVo.buildPage();
-        List userList = userService.queryUserList(tPage,userQuerVo);
-        /*HashMap<String, Object> map = new HashMap<>();
-        map.put("schoool_code", 5200035);
-        List userList = userService.selectByMap(map);*/
+        //List userList = userService.queryUserList(tPage,userQuerVo);
+        List userList = userService.queryListbyCode(tPage, userQuerVo.getCode());
         tPage.setRecords(userList);
         return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
     }

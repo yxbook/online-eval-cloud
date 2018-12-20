@@ -1,7 +1,7 @@
 package com.eval.common.base;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.eval.common.util.StringUtils;
+import com.eval.common.util.ValidateUtil;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,17 +22,17 @@ public class BaseQuery {
     //每页条数
     private int pageSize = 20;
     // 降序字段
-    private String orderBy;
+    private String orderByDsc;
     // 升序字段
     private String orderByAsc;
 
     public Page buildPage() {
         Page tPage =new Page(this.pageNo,this.pageSize);
-        if(StringUtils.isNotEmpty(this.orderBy)){
-            tPage.setOrderByField(this.orderBy);
+        if(ValidateUtil.isNotEmpty(this.orderByDsc)){
+            tPage.setOrderByField(this.orderByDsc);
             tPage.setAsc(false);
         }
-        if(StringUtils.isNotEmpty(this.orderByAsc)){
+        if(ValidateUtil.isNotEmpty(this.orderByAsc)){
             tPage.setOrderByField(this.orderByAsc);
             tPage.setAsc(true);
         }
