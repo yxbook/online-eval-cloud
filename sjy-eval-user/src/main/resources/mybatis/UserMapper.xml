@@ -20,4 +20,18 @@
         select * from user
     </select>
 
+    <select id="selectUserTest" resultMap="BaseResultMap">
+        SELECT
+          t.id,
+          t.user_id,
+          t.password,
+          t.person_number,
+          t.schoool_code,
+          d.area_code
+        FROM
+          USER t
+          LEFT JOIN d_school d
+            ON t.schoool_code = d.code
+        WHERE d.code = 5200035    </select>
+
 </mapper>

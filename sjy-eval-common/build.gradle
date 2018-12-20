@@ -99,6 +99,7 @@ dependencies{
 
 
     //集成baomidou插件必备的几个包
+    compile "org.mybatis:mybatis:3.4.6"
     compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${libraries.mybatisVersion}"
     compile "com.github.pagehelper:pagehelper:${libraries.pagehelperVersion}"
     compile "org.mybatis.generator:mybatis-generator-core:${libraries.generatorVersion}"

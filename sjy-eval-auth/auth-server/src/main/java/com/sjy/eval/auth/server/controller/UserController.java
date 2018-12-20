@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -52,6 +53,9 @@ public class UserController extends BaseController{
         }
         Page tPage = userQuerVo.buildPage();
         List userList = userService.queryUserList(tPage,userQuerVo);
+        /*HashMap<String, Object> map = new HashMap<>();
+        map.put("schoool_code", 5200035);
+        List userList = userService.selectByMap(map);*/
         tPage.setRecords(userList);
         return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
     }

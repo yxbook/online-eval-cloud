@@ -16,7 +16,7 @@
         <result column="pwd_ming" property="pwdMing" />
     </resultMap>
 
-    <select id="selectAll" resultType="java.util.HashMap">
+    <select id="queryUserList" resultType="java.util.HashMap">
         SELECT
           t.id,
           t.user_id,
@@ -30,5 +30,20 @@
             ON t.schoool_code = d.code
         WHERE d.code = #{query.code}
   </select>
+
+    <select id="selectAllUser" resultMap="BaseResultMap">
+        SELECT
+          t.id,
+          t.user_id,
+          t.password,
+          t.person_number,
+          t.schoool_code,
+          d.area_code
+        FROM
+          USER t
+          LEFT JOIN d_school d
+            ON t.schoool_code = d.code
+        WHERE d.code = 5200035
+    </select>
 
 </mapper>

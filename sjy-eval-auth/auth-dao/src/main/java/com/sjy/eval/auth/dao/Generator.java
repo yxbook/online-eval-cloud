@@ -18,7 +18,7 @@ public class Generator {
     private static String AUTHOR = "youxun";
     private static String MODULE = "sjy-eval-auth";
     private static String DATABASE = "eval";
-    private static String TABLE_NAME = "user";
+    private static String TABLE_NAME = "d_class";
     private static String PACKAGE_NAME = "com.sjy.eval.auth";
     private static String DAO_NAME = "auth-dao";
     private static String SERVICE_NAME = "auth-server";
@@ -29,7 +29,7 @@ public class Generator {
     // 需要insert后返回主键的表配置，key:表名,value:主键名
     private static Map<String, String> LAST_INSERT_ID_TABLES = new HashMap<>();
     static {
-        LAST_INSERT_ID_TABLES.put("user", "id");
+        LAST_INSERT_ID_TABLES.put("d_class", "code");
     }
 
     /**

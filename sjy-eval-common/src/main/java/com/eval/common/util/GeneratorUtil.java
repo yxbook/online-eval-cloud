@@ -4,16 +4,12 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import org.apache.commons.lang.ObjectUtils;
 import org.apache.velocity.VelocityContext;
-import org.mybatis.generator.api.CommentGenerator;
-import org.mybatis.generator.api.IntrospectedColumn;
-import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.dom.java.*;
-import org.mybatis.generator.api.dom.xml.XmlElement;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -65,6 +61,7 @@ public class GeneratorUtil {
         }
 
         String targetProject = module + "/" + daoName;
+        final String  baseProjectPath = targetProject;
         String basePath = GeneratorUtil.class.getResource("/").getPath().replace("/out/production/classes/", "").replace(targetProject, "").replaceFirst("/", "");
         //String generatorConfigXml = MybatisGeneratorUtil.class.getResource("/").getPath().replace("/target/classes/", "") + "/src/main/resources/generatorConfig.xml";
         targetProject = basePath + targetProject;
@@ -172,10 +169,33 @@ public class GeneratorUtil {
         pc.setEntity("entity");
         mpg.setPackageInfo(pc);
 
+        /**
+         * 注入自定义配置
+         */
+        // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
+        InjectionConfig abc = new InjectionConfig() {
+            @Override
+            public void initMap() {
+                Map<String, Object> map = new HashMap<>();
+                map.put("abc", this.getConfig().getGlobalConfig().getAuthor() + "-mp");
+                this.setMap(map);
+            }
+        };
+        //自定义文件输出位置（非必须）
+        List<FileOutConfig> fileOutList = new ArrayList<>();
+        fileOutList.add(new FileOutConfig("/templates/mapper.xml.vm") {
+            @Override
+            public String outputFile(TableInfo tableInfo) {
+                return baseProjectPath + "/src/main/resources/mybatis/" + tableInfo.getEntityName() + "Mapper.xml";
+            }
+        });
+        abc.setFileOutConfigList(fileOutList);
+        mpg.setCfg(abc);
         TemplateConfig tc = new TemplateConfig();
         tc.setController(null);
         tc.setService(null);
         tc.setServiceImpl(null);
+        tc.setXml(null);
         mpg.setTemplate(tc);
         // 执行生成
 

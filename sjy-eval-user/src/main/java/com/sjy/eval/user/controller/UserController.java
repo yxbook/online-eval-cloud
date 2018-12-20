@@ -48,7 +48,7 @@ public class UserController extends BaseController{
         Page tPage = buildPage(querVo);
         HashMap<String, Object> paramsMap = new HashMap<>();
         paramsMap.put("status", 0);
-        List<User> userList = userService.selectByMap(paramsMap);
+        List<User> userList = userService.selectAll();
         tPage.setRecords(userList);
         System.out.println(userList);
         return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
