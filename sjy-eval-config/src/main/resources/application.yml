@@ -1,14 +1,14 @@
 spring:
+  application:
+    name: eval-config
   cloud:
     config:
       server:
         git:
           uri: https://github.com/yxbook/sjy-eval-config.git
-          search-paths: dev
-          username: yxbook
+          username: yxbook@live.cn
           password: youxun123
-  application:
-      name: eval-config-server
+          basedir: F:\basedir
 eureka:
   client:
     service-url:
