@@ -6,7 +6,7 @@ spring:
       discovery:
         service-id: eval-config
         enabled: true
-      profile: test
+      profile: prd
       #label: master 配置分支
 eureka:
   client:
