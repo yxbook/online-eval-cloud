@@ -15,3 +15,4 @@ eureka:
       defaultZone: http://admin:eva321@localhost:8761/eureka/
 server:
     port: 9002 #启动端口
+

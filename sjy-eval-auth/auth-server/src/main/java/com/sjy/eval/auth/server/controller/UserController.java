@@ -14,6 +14,8 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +33,16 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Api(tags ={ "鉴权服务"},description = "鉴权服务接口-网关路径/api-auth")
+@RefreshScope
 public class UserController extends BaseController{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
+
+    @Value("${env}")
+    private String env;
 
     //查询滚动动态信息
     @PutMapping("queryUserPage")
@@ -55,7 +61,11 @@ public class UserController extends BaseController{
         //List userList = userService.queryUserList(tPage,userQuerVo);
         List userList = userService.queryListbyCode(tPage, userQuerVo.getCode());
         tPage.setRecords(userList);
-        return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
+
+        System.out.println("获取动态配置信息：");
+        System.out.println(env);
+
+        return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", env);
     }
 
 }

@@ -5,7 +5,7 @@ spring:
     config:
       discovery:
         service-id: eval-config
-        enabled: true
+        enabled: true #开启通过服务来访问Config Server的功能
       profile: prd
       #label: master 配置分支
 eureka:
