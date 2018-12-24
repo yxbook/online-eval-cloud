@@ -1,11 +1,6 @@
 spring:
   application:
       name: eval-zipkin
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: admin
-    password: admin
   ##表示当前程序不使用sleuth
   sleuth:
     enabled: false
@@ -17,15 +12,3 @@ eureka:
       defaultZone: http://admin:eva321@localhost:8761/eureka/
 server:
     port: 7777 #启动端口
-
-#zipkin:
-#  storage:
-#    StorageComponent: elasticsearch
-#    type: elasticsearch
-#    elasticsearch:
-#      cluster: elasticsearch-zipkin-cluster
-#      hosts: 127.0.0.1:9300
-#      max-requests: 64
-#      index: zipkin
-#      index-shards: 5
-#      index-replicas: 1

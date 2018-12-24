@@ -65,7 +65,7 @@ public class UserController extends BaseController{
         System.out.println("获取动态配置信息：");
         System.out.println(env);
 
-        return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", env);
+        return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
     }
 
 }
