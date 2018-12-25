@@ -1,79 +1,97 @@
 
 buildscript {
     repositories {
-        mavenLocal()
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
-        maven { url "http://repo.maven.apache.org/maven2" }
-        maven { url "https://repo.grails.org/grails/core" }
-        maven { url "https://oss.sonatype.org/content/groups/public/" }
-        maven { url "https://repo.spring.io/libs-milestone/" }
         jcenter()
         mavenCentral()
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/snapshots"}
     }
+
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "se.transmode.gradle:gradle-docker:${dockerVersion}"
     }
 }
 
 allprojects {
-
-    apply plugin: 'maven'
-    apply plugin: 'java'
-    apply plugin: 'groovy'
-    apply plugin: 'org.springframework.boot'
     apply plugin: 'idea'
     group = 'com.sjy.eval'
     version = '1.0-SNAPSHOT'
+}
 
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+
+subprojects {
+    ext {
+        druidVersion  = "1.1.2"
+        groovyVserion = "2.5.1"
+        commonsIoVserion = "2.5"
+        commonsMathVserion = "3.5"
+        commonsCsvVserion = "1.0"
+        commonsLangVserion = "3.4"
+        fastjsonVserion = "1.2.29"
+        mysqlVersion = "5.1.36"
+        beanUtilVersion = "1.9.2"
+        servletVersion = "3.1.0"
+        jwtVersion = "0.9.0"
+        jacksonVersion = "1.9.13"
+        gsonVersion = "2.8.0"
+        validationVersion = "1.1.0.Final"
+        hibernateVersion = "5.2.4.Final"
+        memcachedVersion = "3.0.2"
+        logstashVersion = "5.0"
+        logbackVersion = "1.2.3"
+        metricsVersion = "3.2.5"
+        guavaVersion = "26.0-jre"
+        jodaTimeVersion = "2.10"
+        commonsCodecVersion = "1.11"
+        qiniuVersion = "7.2.0"
+        aliyunVersion = "1.7.8.Final"
+        httpcomponentVersion = "4.5"
+        rxjavaVersion = "2.2.2"
+        poiVersion = "4.0.0"
+        mybatisVersion = "1.3.2"
+        mybatisplusVersion = "1.0.5"
+        mybatisSpringVersion = "1.2.0"
+        swaggerVersion = "2.8.0"
+        aspectjVersion = "1.8.8"
+        baomidouVersion = "2.3"
+        generatorVersion = "1.3.5"
+        pagehelperVersion = "5.0.1"
+        velocityVersion = "1.7"
+        lombokVersion = "1.16.20"
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'org.springframework.boot'
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
 
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
     repositories {
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        maven { url "https://oss.sonatype.org/content/groups/public/" }
-        maven { url "https://repo.spring.io/libs-milestone/" }
-        jcenter()
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/repositories/snapshots" }
         mavenCentral()
     }
-
     dependencyManagement {
         imports {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
     }
 
-    if (project.subprojects) {
-        bootRepackage {
-            enabled = false
+    sourceSets {
+        main {
+            java.srcDir('src/main/java')
+            resources.srcDir('src/main/resources')
         }
-    } else {
-        apply plugin: 'docker'
-        docker {
-            maintainer = 'youxun<youxun@163.com>'
-            baseImage = 'openjdk:8-jre-alpine'
-        }
-        task dockerBuild(type: Docker, dependsOn: build) {
-            applicationName = project.name
-            addFile {
-                from configurations.archives.artifacts.files
-                into '/data/workspace/' + project.name
-            }
-            workingDir '/data/workspace/' + project.name
-            setEnvironment('HOST_MACHINE_IP', hostMachineIp)
-            defaultCommand(['java', '-jar', '-Dspring.profiles.active=docker', "${project.name}-${project.version}.jar"])
+        test {
+            java.srcDir('src/test/java')
+            resources.srcDir('src/test/resources')
         }
     }
 }
 
-subprojects {
-
-}
-
-sourceSets.main.java.srcDirs = []
-sourceSets.main.groovy.srcDirs += ["src/main/java"]
 
 
