@@ -13,4 +13,4 @@ eureka:
     service-url:
       defaultZone: http://admin:eva321@localhost:8761/eureka/
   instance:
-    status-page-url: http://${spring.cloud.client.ipAddress}:${server.port}/swagger-ui.html
+    status-page-url: http://127.0.0.1:9999/swagger-ui.html

@@ -40,7 +40,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://admin:eva321@localhost:8761/eureka/
 mybatis-plus:
   mapper-locations: classpath:/mybatis/*.xml
   #实体扫描，多个package用逗号或者分号分隔

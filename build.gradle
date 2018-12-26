@@ -1,9 +1,11 @@
 
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
         maven { url "http://maven.aliyun.com/nexus/content/repositories/snapshots"}
+        maven { url "https://oss.sonatype.org/content/groups/public/" }
+        maven { url "https://repo.spring.io/libs-milestone/" }
+        jcenter()
     }
 
     dependencies {
@@ -61,7 +63,6 @@ subprojects {
 
     apply plugin: 'java'
     apply plugin: 'groovy'
-    apply plugin: 'org.springframework.boot'
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
@@ -75,6 +76,9 @@ subprojects {
         maven { url "http://maven.aliyun.com/nexus/content/repositories/snapshots" }
         mavenCentral()
     }
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
     dependencyManagement {
         imports {
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"

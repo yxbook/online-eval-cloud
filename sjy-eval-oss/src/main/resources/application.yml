@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: eval-oss
+  data:
+    elasticsearch:
+      cluster-name: eval
+      cluster-nodes: 127.0.0.1:9300
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:eva321@localhost:8761/eureka/
+server:
+  port: 9693
+logging:
+  config: classpath:logback-spring.xml

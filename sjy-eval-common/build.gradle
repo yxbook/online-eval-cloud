@@ -1,3 +1,4 @@
+
 dependencies{
 
     compile "org.codehaus.groovy:groovy:" +groovyVserion
@@ -44,7 +45,6 @@ dependencies{
     compile "org.hibernate:hibernate-validator:" +hibernateVersion
 
 
-    compile fileTree(dir:'lib',includes:['*jar'])
     compile "org.apache.commons:commons-csv:" +commonsCsvVserion
     compile "org.apache.commons:commons-math3:" +commonsMathVserion
     compile "org.apache.poi:poi-ooxml:" +poiVersion
@@ -67,8 +67,8 @@ dependencies{
 
 
     compile "org.springframework.boot:spring-boot-starter-web"
-    compile "org.springframework.cloud:spring-cloud-starter-zuul"
-    compile "org.springframework.cloud:spring-cloud-starter-eureka"
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-zuul"
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
     compile "org.springframework.cloud:spring-cloud-starter-zipkin"
     compile "org.springframework.cloud:spring-cloud-config-client"
     compile "org.springframework.cloud:spring-cloud-starter-bus-amqp"
