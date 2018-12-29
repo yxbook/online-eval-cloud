@@ -4,7 +4,7 @@ spring:
   data:
     elasticsearch:
       cluster-name: eval
-      cluster-nodes: 127.0.0.1:9300
+      cluster-nodes: 120.78.152.37:9300
 eureka:
   client:
     service-url:
