@@ -1,4 +1,4 @@
-package com.sjy.eval.auth.dao.queryVo;
+package com.sjy.eval.auth.queryVo;
 
 import com.eval.common.base.BaseQuery;
 import lombok.Getter;

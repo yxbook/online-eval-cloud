@@ -125,7 +125,7 @@ public class AESUtil {
         return null;
     }
 
-    public static void main(String[] args) {
+ /*   public static void main(String[] args) {
         String[] keys = {
                 "root"
         };
@@ -138,5 +138,5 @@ public class AESUtil {
             System.out.println(decryptString);
             System.out.println("-------------------------------------");
         }
-    }
+    }*/
 }

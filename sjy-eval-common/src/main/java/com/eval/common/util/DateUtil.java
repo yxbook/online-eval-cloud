@@ -274,7 +274,7 @@ public class DateUtil {
 		return 0;
 	}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		System.out.println(hoursBetweenByDateStr(getDateByStrTime("2018010223", "yyyyMMddHH"),
 				getDateByStrTime("2018010323", "yyyyMMddHH")));
 		System.out.println(minuteBetweenByDateStr(getDateByStrTime("201801052359", "yyyyMMddHHmm"),
@@ -292,6 +292,6 @@ public class DateUtil {
 		System.out.println(DateUtil.secondBetweenByDateStr(
 				DateUtil.getDateByStrTime("20180110150200", "yyyyMMddHHmmss"), DateUtil.getNow()));
 
-	}
+	}*/
 
 }

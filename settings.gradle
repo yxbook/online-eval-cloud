@@ -1,28 +1,15 @@
-/**
- * Groovy script that includes modules automatically.
- */
-def dir = new File(settingsDir.toString())
-def projects = new HashSet()
-def projectSymbol = File.separator + 'src'
+rootProject.name = 'online-eval-clould'
+include ':sjy-eval-common'
+include ':sjy-eval-auth'
+include ':sjy-eval-config'
+include ':sjy-eval-eureka'
+include ':sjy-eval-gateway'
+include ':sjy-eval-knowlege'
+include ':sjy-eval-oss'
+include ':sjy-eval-user'
+include ':sjy-eval-zipkin'
 
-dir.eachDirRecurse { subDir ->
-    def subDirName = subDir.canonicalPath
-    def isSubProject = true
-    if (subDirName.endsWith(projectSymbol)) {
-        for (String projectDir in projects) {
-            if (subDirName.startsWith(projectDir)) {
-                isSubProject = false
-                break
-            }
-        }
-        if (isSubProject) {
-            projects << subDirName
-            def lastIndex = subDirName.lastIndexOf(projectSymbol)
-            def gradleModulePath = subDirName.substring(dir.canonicalPath.length(), lastIndex).replace(File.separator, ':')
-            println "include " + gradleModulePath
-            include gradleModulePath
-        }
-    }
-}
+
+
 
 

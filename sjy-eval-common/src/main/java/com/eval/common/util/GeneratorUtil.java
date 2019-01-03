@@ -1,10 +1,8 @@
 package com.eval.common.util;
 
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
@@ -47,8 +45,6 @@ public class GeneratorUtil {
             String tabelName,
             String packageName,
             Map<String, String> lastInsertIdTables,
-            String daoName,
-            String serviceName,
             String author) throws Exception {
 
         String os = System.getProperty("os.name");
@@ -59,8 +55,8 @@ public class GeneratorUtil {
             service_vm = GeneratorUtil.class.getResource(service_vm).getPath();
             serviceImpl_vm = GeneratorUtil.class.getResource(serviceImpl_vm).getPath();
         }
-
-        String targetProject = module + "/" + daoName;
+        //String targetProject = module + "/" + daoName;
+        String targetProject = module;
         final String  baseProjectPath = targetProject;
         String basePath = GeneratorUtil.class.getResource("/").getPath().replace("/out/production/classes/", "").replace(targetProject, "").replaceFirst("/", "");
         //String generatorConfigXml = MybatisGeneratorUtil.class.getResource("/").getPath().replace("/target/classes/", "") + "/src/main/resources/generatorConfig.xml";
@@ -165,14 +161,14 @@ public class GeneratorUtil {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent(packageName + ".dao");
-        pc.setEntity("entity");
+        pc.setParent(packageName);
         mpg.setPackageInfo(pc);
 
         /**
          * 注入自定义配置
          */
         // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
+        /*
         InjectionConfig abc = new InjectionConfig() {
             @Override
             public void initMap() {
@@ -182,7 +178,7 @@ public class GeneratorUtil {
             }
         };
         //自定义文件输出位置（非必须）
-        List<FileOutConfig> fileOutList = new ArrayList<>();
+       List<FileOutConfig> fileOutList = new ArrayList<>();
         fileOutList.add(new FileOutConfig("/templates/mapper.xml.vm") {
             @Override
             public String outputFile(TableInfo tableInfo) {
@@ -190,12 +186,11 @@ public class GeneratorUtil {
             }
         });
         abc.setFileOutConfigList(fileOutList);
-        mpg.setCfg(abc);
+        mpg.setCfg(abc);*/
         TemplateConfig tc = new TemplateConfig();
         tc.setController(null);
         tc.setService(null);
         tc.setServiceImpl(null);
-        tc.setXml(null);
         mpg.setTemplate(tc);
         // 执行生成
 
@@ -205,8 +200,8 @@ public class GeneratorUtil {
 
         System.out.println("========== 开始生成Service ==========");
         String ctime = new SimpleDateFormat("yyyy/M/d").format(new Date());
-        String servicePath = basePath + module + "/" + serviceName + "/src/main/java/" + packageName.replaceAll("\\.", "/") + "/server/service";
-        String serviceImplPath = basePath + module + "/" + serviceName + "/src/main/java/" + packageName.replaceAll("\\.", "/") + "/server/service/impl";
+        String servicePath = basePath + module  + "/src/main/java/" + packageName.replaceAll("\\.", "/") + "/service";
+        String serviceImplPath = basePath + module  + "/src/main/java/" + packageName.replaceAll("\\.", "/") + "/service/impl";
         // 删除旧代码
         //deleteDir(new File(servicePath));
         //deleteDir(new File(serviceImplPath));

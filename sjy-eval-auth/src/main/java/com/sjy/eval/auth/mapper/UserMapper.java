@@ -1,9 +1,9 @@
-package com.sjy.eval.auth.dao.mapper;
+package com.sjy.eval.auth.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
-import com.sjy.eval.auth.dao.entity.User;
-import com.sjy.eval.auth.dao.queryVo.UserQuerVo;
+import com.sjy.eval.auth.entity.User;
+import com.sjy.eval.auth.queryVo.UserQuerVo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  */
 public interface UserMapper extends BaseMapper<User> {
 
-    List queryUserList(Pagination pagination, @Param("query")UserQuerVo querVo);
+    List queryUserList(Pagination pagination, @Param("query") UserQuerVo querVo);
 
     List queryListbyCode(Pagination pagination, @Param("code") int code);
 }

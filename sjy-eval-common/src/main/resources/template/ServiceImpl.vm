@@ -1,9 +1,9 @@
-package ${package_name}.server.service.impl;
+package ${package_name}.service.impl;
 
 import com.eval.common.base.BaseServiceImpl;
-import ${package_name}.dao.mapper.${model}Mapper;
-import ${package_name}.dao.entity.${model};
-import ${package_name}.server.service.${model}Service;
+import ${package_name}.mapper.${model}Mapper;
+import ${package_name}.entity.${model};
+import ${package_name}.service.${model}Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

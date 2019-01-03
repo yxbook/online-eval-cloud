@@ -17,6 +17,7 @@ allprojects {
     apply plugin: 'idea'
     group = 'com.sjy.eval'
     version = '1.0-SNAPSHOT'
+
 }
 
 
@@ -66,7 +67,6 @@ subprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
-
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
