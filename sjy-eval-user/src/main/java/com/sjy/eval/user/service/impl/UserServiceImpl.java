@@ -2,6 +2,7 @@ package com.sjy.eval.user.service.impl;
 
 
 import com.eval.common.base.BaseServiceImpl;
+import com.sjy.eval.user.client.AuthClientApi;
 import com.sjy.eval.user.entity.User;
 import com.sjy.eval.user.mapper.UserMapper;
 import com.sjy.eval.user.service.UserService;
@@ -28,8 +29,22 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private AuthClientApi authClientApi;
+
     @Override
     public List<User> selectAll() {
         return userMapper.selectAll();
+    }
+
+    @Override
+    public int testSave(User user) {
+
+        userMapper.insert(user);
+        System.out.println("执行事务操作111:" + user.getId());
+
+        int id = authClientApi.saveTest("LNC");
+        System.out.println("执行事务操作222:" + id);
+        return id;
     }
 }

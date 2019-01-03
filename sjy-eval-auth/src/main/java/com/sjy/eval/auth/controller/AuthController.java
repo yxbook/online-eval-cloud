@@ -77,9 +77,11 @@ public class AuthController extends BaseController{
         user.setCreateDate(new Date());
         user.setUserId("T0006666");
         user.setSchooolCode(43532452);
-        userService.insert(user);
+        int id = userService.inserUser(user);
 
-        return user.getId();
+
+
+        return id;
     }
 
 }

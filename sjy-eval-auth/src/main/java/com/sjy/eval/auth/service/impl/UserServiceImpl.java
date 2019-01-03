@@ -38,4 +38,10 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     public List queryListbyCode(Pagination pagination, int code) {
         return userMapper.queryListbyCode(pagination, code);
     }
+
+    @Override
+    public int inserUser(User user) {
+        userMapper.insert(user);
+        return user.getId();
+    }
 }

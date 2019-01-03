@@ -13,7 +13,7 @@ public class AuthClientApiHystric implements AuthClientApi{
 
     @Override
     public int saveTest(String userName) {
-        System.out.println("进入断路器-list。。。");
-        throw new RuntimeException("list 保存失败.");
+        System.out.println("进入断路器-saveTest。。。");
+        throw new RuntimeException("saveTest 保存失败.");
     }
 }

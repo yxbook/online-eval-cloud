@@ -14,4 +14,6 @@ import java.util.List;
 public interface UserService extends BaseService<User> {
 
     List<User> selectAll();
+
+    int testSave(User user);
 }

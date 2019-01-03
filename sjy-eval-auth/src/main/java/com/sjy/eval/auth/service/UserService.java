@@ -18,4 +18,6 @@ public interface UserService extends BaseService<User> {
     List queryUserList(Pagination pagination, UserQuerVo querVo);
 
     List queryListbyCode(Pagination pagination, int code);
+
+    int inserUser(User user);
 }

@@ -70,3 +70,5 @@ ribbon:
   eager-load:
     enabled: true
     clients: eval-auth
+#txmanager地址
+tm.m

@@ -2,9 +2,8 @@ package com.sjy.eval.user.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.eval.common.base.BaseController;
-import com.eval.common.base.BaseResult;
 import com.eval.common.base.BaseEnum;
-import com.sjy.eval.user.client.AuthClientApi;
+import com.eval.common.base.BaseResult;
 import com.sjy.eval.user.entity.User;
 import com.sjy.eval.user.queryVo.UserQuerVo;
 import com.sjy.eval.user.service.UserService;
@@ -34,9 +33,6 @@ public class UserController extends BaseController{
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private AuthClientApi authClientApi;
-
     //查询滚动动态信息
     @PutMapping("/queryUserPage")
     @ApiOperation(value="分页查询测试", notes="参数：无")
@@ -60,12 +56,7 @@ public class UserController extends BaseController{
     @PostMapping("/testLNC")
     public BaseResult testLNC(@RequestBody User user) {
         user.setCreateDate(new Date());
-        userService.insert(user);
-        System.out.println("执行事务操作111:" + user.getId());
-
-        int id = authClientApi.saveTest("LNC");
-        System.out.println("执行事务操作222:" + id);
-        int usu = 100/0;
+        int id = userService.testSave(user);
         return new BaseResult(BaseEnum.SUCCESS.getStatus(), "插入成功", id);
     }
 
