@@ -3,9 +3,9 @@ spring:
     name: eval-user
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    username: evalowner
-    password: c3U4xRaMM10rSQMmk
-    url: jdbc:mysql://rm-bp1lt3gi5m0570f24o.mysql.rds.aliyuncs.com:3306/eval?useSSL=false&serverTimezone=UTC&allowMultiQueries=true
+    username: root
+    password: root
+    url: jdbc:mysql://127.0.0.1:3306/eval?useSSL=false&serverTimezone=UTC&allowMultiQueries=true
     # 配置初始化大小、最小、最大
     maxActive: 20
     initialSize: 1
@@ -30,19 +30,12 @@ spring:
   jackson:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
-  mail:
-    default-encoding: UTF-8
-    host: smtp.163.com
-    password: youxun123
-    port: 25
-    protocol: smtp
-    username: yooxuu@163.com
 eureka:
   client:
     service-url:
       defaultZone: http://admin:eva321@localhost:8761/eureka/
 mybatis-plus:
-  mapper-locations: classpath:/com/sjy/eval/user/mapper/xml/*Mapper.xml
+  mapper-locations: classpath:/mybatis/*.xml
   #实体扫描，多个package用逗号或者分号分隔
   type-aliases-package: com.sjy.eval.user.entity
   global-config:
