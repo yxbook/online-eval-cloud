@@ -1,4 +1,4 @@
-rootProject.name = 'online-eval-clould'
+rootProject.name = 'online-eval-cloud'
 include ':sjy-eval-common'
 include ':sjy-eval-auth'
 include ':sjy-eval-config'
