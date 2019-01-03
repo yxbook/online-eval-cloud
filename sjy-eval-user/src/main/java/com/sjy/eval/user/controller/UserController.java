@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.eval.common.base.BaseController;
 import com.eval.common.base.BaseResult;
 import com.eval.common.base.BaseEnum;
+import com.sjy.eval.user.client.AuthClientApi;
 import com.sjy.eval.user.entity.User;
 import com.sjy.eval.user.queryVo.UserQuerVo;
 import com.sjy.eval.user.service.UserService;
@@ -13,11 +14,9 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,11 +28,14 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/user")
-@Api(tags ={ "鉴权服务"},description = "鉴权服务接口-网关路径/api-auth")
+@Api(tags ={ "用户服务"},description = "用户服务接口-网关路径/api-user")
 public class UserController extends BaseController{
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private AuthClientApi authClientApi;
 
     //查询滚动动态信息
     @PutMapping("/queryUserPage")
@@ -52,6 +54,19 @@ public class UserController extends BaseController{
         tPage.setRecords(userList);
         System.out.println(userList);
         return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
+    }
+
+
+    @PostMapping("/testLNC")
+    public BaseResult testLNC(@RequestBody User user) {
+        user.setCreateDate(new Date());
+        userService.insert(user);
+        System.out.println("执行事务操作111:" + user.getId());
+
+        int id = authClientApi.saveTest("LNC");
+        System.out.println("执行事务操作222:" + id);
+        int usu = 100/0;
+        return new BaseResult(BaseEnum.SUCCESS.getStatus(), "插入成功", id);
     }
 
     private Page buildPage(UserQuerVo friendQueryVo) {

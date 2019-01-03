@@ -5,6 +5,7 @@ import com.eval.common.base.BaseController;
 import com.eval.common.base.BaseEnum;
 import com.eval.common.base.BaseResult;
 import com.eval.common.util.ValidateUtil;
+import com.sjy.eval.auth.entity.User;
 import com.sjy.eval.auth.queryVo.UserQuerVo;
 import com.sjy.eval.auth.service.UserService;
 import io.swagger.annotations.Api;
@@ -16,11 +17,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,12 +29,12 @@ import java.util.List;
  * @create: 2018-12-17 16:25
  **/
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/auth")
 @Api(tags ={ "鉴权服务"},description = "鉴权服务接口-网关路径/api-auth")
 @RefreshScope
-public class UserController extends BaseController{
+public class AuthController extends BaseController{
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
     private UserService userService;
@@ -65,6 +64,22 @@ public class UserController extends BaseController{
         System.out.println(env);
 
         return new BaseResult(BaseEnum.SUCCESS.getStatus(), "查询成功", tPage);
+    }
+
+
+    @PostMapping("inserUser")
+    public int inserUser(@RequestParam("userName") String userName) {
+
+        LOGGER.debug("执行插入操作" + userName);
+
+        User user = new User();
+        user.setPassword("asdasdasd");
+        user.setCreateDate(new Date());
+        user.setUserId("T0006666");
+        user.setSchooolCode(43532452);
+        userService.insert(user);
+
+        return user.getId();
     }
 
 }

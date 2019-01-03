@@ -18,9 +18,9 @@ public class Generator {
     private static String TABLE_NAME = "d_class";
     private static String PACKAGE_NAME = "com.sjy.eval.auth";
     private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static String JDBC_URL = "jdbc:mysql://rm-bp1lt3gi5m0570f24o.mysql.rds.aliyuncs.com:3306/eval?useSSL=false&serverTimezone=UTC&allowMultiQueries=true";
-    private static String JDBC_USERNAME = "evalowner";
-    private static String JDBC_PASSWORD = "c3U4xRaMM10rSQMmk";
+    private static String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/eval?useSSL=false&serverTimezone=UTC&allowMultiQueries=true";
+    private static String JDBC_USERNAME = "root";
+    private static String JDBC_PASSWORD = "root";
     // 需要insert后返回主键的表配置，key:表名,value:主键名
     private static Map<String, String> LAST_INSERT_ID_TABLES = new HashMap<>();
     static {
