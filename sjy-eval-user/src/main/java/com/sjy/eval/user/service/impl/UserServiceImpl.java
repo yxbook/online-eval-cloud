@@ -1,6 +1,7 @@
 package com.sjy.eval.user.service.impl;
 
 
+import com.codingapi.tx.annotation.TxTransaction;
 import com.eval.common.base.BaseServiceImpl;
 import com.sjy.eval.user.client.AuthClientApi;
 import com.sjy.eval.user.entity.User;
@@ -38,6 +39,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     }
 
     @Override
+    @TxTransaction(isStart = true )
     public int testSave(User user) {
 
         userMapper.insert(user);
@@ -45,6 +47,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 
         int id = authClientApi.saveTest("LNC");
         System.out.println("执行事务操作222:" + id);
+        int ii = 100/0;
         return id;
     }
 }

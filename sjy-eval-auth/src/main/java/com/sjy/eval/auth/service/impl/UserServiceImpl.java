@@ -1,6 +1,7 @@
 package com.sjy.eval.auth.service.impl;
 
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
+import com.codingapi.tx.annotation.TxTransaction;
 import com.eval.common.base.BaseServiceImpl;
 import com.sjy.eval.auth.entity.User;
 import com.sjy.eval.auth.mapper.UserMapper;
@@ -40,6 +41,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     }
 
     @Override
+    @TxTransaction
     public int inserUser(User user) {
         userMapper.insert(user);
         return user.getId();

@@ -13,6 +13,9 @@ eureka:
     service-url:
       defaultZone: http://admin:eva321@localhost:8761/eureka/
   instance:
-    status-page-url: http://127.0.0.1:9999/swagger-ui.html
+    status-page-url: http://127.0.0.1:9966/swagger-ui.html
 logging:
   config: classpath:logback-spring.xml
+
+tm.manager.url: http://127.0.0.1:7000/tx/manager/
+logging.level.com.codingapi: debug

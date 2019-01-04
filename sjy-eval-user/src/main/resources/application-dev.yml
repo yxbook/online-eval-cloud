@@ -70,5 +70,6 @@ ribbon:
   eager-load:
     enabled: true
     clients: eval-auth
-#txmanager地址
-tm.m
+
+tm.manager.url: http://127.0.0.1:7000/tx/manager/
+logging.level.com.codingapi: debug

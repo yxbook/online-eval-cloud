@@ -15,7 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @MapperScan(basePackages = "com.sjy.eval.user.mapper")
 @EnableSwagger2
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"com.codingapi.tx", "com.sjy.eval.user"})
 public class UserServerApplication {
 
     public static void main(String[] args) {
