@@ -1,14 +1,4 @@
 dependencies {
     compile project(':sjy-eval-common')
 
-    compile (group: 'com.codingapi', name: 'transaction-springcloud', version: '4.2.0'){
-        exclude group: 'org.slf4j'
-    }
-    compile group: 'io.netty', name: 'netty-all', version: '4.1.12.Final'
-
-    compile (group: 'com.codingapi', name: 'tx-plugins-db', version: '4.2.0'){
-        exclude group: 'org.slf4j'
-    }
-
-    compile "junit:junit:4.11"
 }
