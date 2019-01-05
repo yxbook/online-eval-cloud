@@ -47,7 +47,6 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
 
         int id = authClientApi.saveTest("LNC");
         System.out.println("执行事务操作222:" + id);
-        int ii = 100/0;
         return id;
     }
 }

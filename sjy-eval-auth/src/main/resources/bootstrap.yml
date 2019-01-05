@@ -18,4 +18,3 @@ logging:
   config: classpath:logback-spring.xml
 
 tm.manager.url: http://127.0.0.1:7000/tx/manager/
-logging.level.com.codingapi: debug

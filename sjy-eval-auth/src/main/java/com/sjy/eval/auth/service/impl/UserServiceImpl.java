@@ -44,6 +44,7 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     @TxTransaction
     public int inserUser(User user) {
         userMapper.insert(user);
+        int ii = 100/0;
         return user.getId();
     }
 }
